@@ -1,5 +1,3 @@
-import LoginStyle from './Login.style.scss'
-
 const Login = () => {
   return (
     <div>
