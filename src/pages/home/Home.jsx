@@ -1,4 +1,4 @@
-import HomeStyle from './Home.style'
+import HomeStyle from './Home.style.jsx'
 
 const Home = () => {
   return (
