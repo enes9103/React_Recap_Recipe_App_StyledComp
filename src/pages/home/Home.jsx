@@ -2,29 +2,32 @@ import HomeStyle from './Home.style'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Header from '../../components/header/Header'
 
 const Home = () => {
+  const mealType=["Breakfast","Lunch","Dinner","Snack","Teatime"]
   const [query, setQuery] = useState('egg')
-  const [selectedMeal, setSelectedMeal] = useState('breakfast')
+  const [selectedMeal, setSelectedMeal] = useState(mealType[0])
+  const [recipes, setRecipes] = useState('')
 
   const APP_ID ="f6edb9f6";
   const APP_KEY ="4ab957a75da653a00a88eb87864b8139";
 
   const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${selectedMeal}`
   const getData = async() => {
+    try {
     const { data } = await axios.get(url)
-    console.log(data.hits)
-  };
-
-  useEffect(() => {
-  getData();
-  }, [])
+    // console.log(data.hits)
+    setRecipes(data.hits)
+  } catch (error) {
+    console.log(error)
+  }
+  }
 
   return (
     <div>
-      
+      <Header setQuery = {setQuery} setSelectedMeal = {setSelectedMeal} mealType = {mealType} getData = {getData}/>
     </div>
   )
 }
-
 export default Home;
