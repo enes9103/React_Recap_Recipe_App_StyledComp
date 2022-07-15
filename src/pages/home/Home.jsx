@@ -1,33 +1,54 @@
-import HomeStyle from './Home.style'
-import axios from 'axios'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import Header from '../../components/header/Header'
+import HomeStyle, { HeaderText, HomeImg, ImgDiv } from "./Home.style";
+import axios from "axios";
+import { useState } from "react";
+import Header from "../../components/header/Header";
+import Cards from "../../components/cards/Cards";
+import homeSvg from "../../assets/home.svg";
 
 const Home = () => {
-  const mealType=["Breakfast","Lunch","Dinner","Snack","Teatime"]
-  const [query, setQuery] = useState('egg')
-  const [selectedMeal, setSelectedMeal] = useState(mealType[0])
-  const [recipes, setRecipes] = useState('')
+  const mealType = ["Breakfast", "Lunch", "Dinner", "Snack", "Teatime"];
+  const [query, setQuery] = useState("egg");
+  const [selectedMeal, setSelectedMeal] = useState(mealType[0]);
+  const [recipes, setRecipes] = useState(null);
 
-  const APP_ID ="f6edb9f6";
-  const APP_KEY ="4ab957a75da653a00a88eb87864b8139";
+  const APP_ID = "f6edb9f6";
+  const APP_KEY = "4ab957a75da653a00a88eb87864b8139";
 
-  const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${selectedMeal}`
-  const getData = async() => {
-    try {
-    const { data } = await axios.get(url)
-    // console.log(data.hits)
-    setRecipes(data.hits)
-  } catch (error) {
-    console.log(error)
-  }
-  }
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}&mealType=${selectedMeal}`;
+  const getData = async () => {
+    if (query) {
+      try {
+        const { data } = await axios.get(url);
+        // console.log(data.hits)
+        setRecipes(data.hits);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Please enter a valid query");
+    }
+  };
 
   return (
     <div>
-      <Header setQuery = {setQuery} setSelectedMeal = {setSelectedMeal} mealType = {mealType} getData = {getData}/>
+      <Header
+        setQuery={setQuery}
+        setSelectedMeal={setSelectedMeal}
+        mealType={mealType}
+        getData={getData}
+      />
+      {!recipes && (
+        <ImgDiv>
+          <HomeImg src={homeSvg} />
+        </ImgDiv>
+      )}
+      {recipes?.length === 0 && (
+        <HeaderText>
+          No recipes found for {query}
+        </HeaderText>
+      )}
+      {recipes?.length > 0 && <Cards recipes={recipes} />}
     </div>
-  )
-}
+  );
+};
 export default Home;
