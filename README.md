@@ -1,7 +1,7 @@
 ## About The Project
 React_Recap_Recipe Application is an application where users can review and see the details of The Rich and Morty Serial characters and episodes.
 
-DEMO: https://the-rich-and-morty.vercel.app/
+DEMO: 
 
 <!-- DESCRİPTİON -->
 ## Description
