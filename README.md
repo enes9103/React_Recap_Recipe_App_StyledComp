@@ -1,3 +1,31 @@
+## About The Project
+React_Recap_Recipe Application is an application where users can review and see the details of The Rich and Morty Serial characters and episodes.
+
+DEMO: https://the-rich-and-morty.vercel.app/
+
+<!-- DESCRİPTİON -->
+## Description
+- The application is prepared using the Next.JS Framework.
+- React library and React Hooks structures are used in the application.
+- All features of the project are in working condition.
+- The project looks responsive on all screens.
+- https://rickandmortyapi.com/ Api is used for application data.
+- Bootstrap is used as UI library.
+- The application consists of "HOME", "EPISODES", "EBOUT", "DETAIL" and "PAGENOTFOUND" pages.
+- 20 characters are listed on the main page using the relevant API.
+- Back and forth options are used as the pagination structure at the bottom of the main page. In each forward or backward state, the next/previous 20 characters are listed according to the id number.
+- When a character card component is clicked on the main page, the Detail page of the character can be accessed and the data of the character details are listed.
+- The <title> information is given as the character title on the detail page.
+- After 20 characters on the login page, other characters can be accessed from the pagination structure. Since the pagination structure is used, the desired virtual scroll is not used in the case.
+- The detail page has been prepared with Server Side Rendering and is in dynamic working condition.
+- Application dependencies are managed with npm package manager.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- PROJECT OUTCOME -->
+## Project Outcome
+![Project gif](food-search-app.gif)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
